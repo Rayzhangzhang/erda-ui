@@ -20,7 +20,7 @@ const { ModuleFederationPlugin } = require('webpack').container;
 const AutomaticVendorFederation = require('@module-federation/automatic-vendor-federation');
 const packageJson = require('./package.json');
 
-const { getPath } = require('../utils/resolve')
+const { getPath } = require('../utils/resolve');
 
 const resolve = pathname => path.resolve(__dirname, pathname);
 
@@ -28,7 +28,7 @@ module.exports = () => {
   const nodeEnv = process.env.NODE_ENV || 'development';
   const isProd = nodeEnv === 'production';
   console.log('isProd:', isProd);
-  
+
   const lessVariables = getLessTheme(themeColor);
   const scssVariables = getScssTheme(false);
 
@@ -36,11 +36,11 @@ module.exports = () => {
 
   const commonConfig = {
     entry: {
-      'main': './src/index.tsx',
-      'cube': './src/cube.ts',
-      'i18n': './src/i18n.ts',
-      'agent': './src/agent.ts',
-      'config': './src/config.ts',
+      main: './src/index.tsx',
+      cube: './src/cube.ts',
+      i18n: './src/i18n.ts',
+      agent: './src/agent.ts',
+      config: './src/config.ts',
       'stores/route': './src/stores/route.ts',
       'stores/loading': './src/stores/loading.ts',
     },
@@ -63,7 +63,7 @@ module.exports = () => {
         {
           test: /\.(scss)$/,
           include: [
-            getPath('@terminus/nusi')
+            getPath('@terminus/nusi'),
           ],
           use: [
             MiniCssExtractPlugin.loader,
@@ -106,7 +106,7 @@ module.exports = () => {
           ],
           include: [
             getPath('antd'),
-            getPath('@terminus/nusi')
+            getPath('@terminus/nusi'),
           ],
         },
         {
@@ -150,7 +150,7 @@ module.exports = () => {
           './config': './src/config.ts',
           './stores/route': './src/stores/route.ts',
           './stores/loading': './src/stores/loading.ts',
-          './nusi':'./src/nusi/index.tsx',
+          './nusi': './src/nusi/index.tsx',
         },
         shared: {
           ...AutomaticVendorFederation({
